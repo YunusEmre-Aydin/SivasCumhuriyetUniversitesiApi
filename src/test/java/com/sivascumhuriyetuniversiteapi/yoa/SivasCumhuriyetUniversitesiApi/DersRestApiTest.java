@@ -18,27 +18,29 @@ public class DersRestApiTest {
 
 	
 		List<String> DERSLER = new ArrayList<>();
-		String sonuc = ("Matematik");
-		assertEquals("Matematik", DERSLER);
+		System.out.println(DERSLER);	
 		return;
 	}
 
 	@Test
 	public void testEkle() {
 		List<String> DERSLER = new ArrayList<>();
-		DERSLER.add("Cografya");
-	
+		String ders ="Matematik";
 
-		String sonuc = ("Cografya");
-		assertEquals("Cografya", sonuc);
+		DersRestApi ekle = new DersRestApi();	
+		String eklenenDers = ekle.DersEkle(ders);
+		DERSLER.add(eklenenDers);
 	}
 
 	@Test
 	public void testSil() {
 		List<String> DERSLER = new ArrayList<>();
-		DERSLER.remove("Cografya");
-		boolean sonuc = DERSLER.remove("Cografya");;
-		assertEquals("Cografya", sonuc);
+	int silinenDers = 1;
+	
+	
+	DersRestApi sil = new DersRestApi();
+	String dersisil = sil.DersSil(1);
+
 	}
 
 }

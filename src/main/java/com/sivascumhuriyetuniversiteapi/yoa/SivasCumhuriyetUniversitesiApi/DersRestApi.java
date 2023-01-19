@@ -10,16 +10,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ders")
 public class DersRestApi {
 
-	public static final List<String> DERSLER = new ArrayList<>();
+	private static final List<String> DERSLER = new ArrayList<>();
 	{
 		DERSLER.add("Matematik");
 		DERSLER.add("Fizik");
 		DERSLER.add("Biyoloji");
 		
+		int silinenDers = 1;
+		DERSLER.remove(silinenDers);
+		
+		int eklenenDers = 2;
+		DERSLER.remove(eklenenDers);
 		
 	}
 	@GetMapping("/")  //listele
-	public List<String> listele(){
+	public List<String> DersleriListele(){
 		
 		return DERSLER;
 		
@@ -27,15 +32,17 @@ public class DersRestApi {
 	
 	
 	@PostMapping("/")  //ekle
-	public boolean ekle(@RequestBody String dersAd) {
-		DERSLER.add(dersAd);
-		return true;
+	public String DersEkle(@RequestBody String eklenenDers) {
+		DERSLER.add(eklenenDers);
+		int eklenenders = 1;
+		return null;
 	}
 	
-	@DeleteMapping("/") // sil
-	public boolean sil(@RequestBody String dersAd) {
-		DERSLER.remove(dersAd);
-		return true;
+	@PostMapping("/") // sil
+	public String DersSil(@RequestBody int silinenDers) {
+		DERSLER.remove(silinenDers);
+		
+		return null;
 	}
 	
 }
